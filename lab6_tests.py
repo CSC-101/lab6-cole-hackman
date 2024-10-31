@@ -1,6 +1,8 @@
 import data
 import lab6
 import unittest
+from data import Book
+from lab6 import str_translate, swap_case, selection_sort_books, histogram
 
 
 # Write your test cases for each part below.
@@ -64,18 +66,52 @@ class TestCases(unittest.TestCase):
 
 
     # Part 1
+    def test_selection_sort_books_1(self):
+        books = [Book(title="The Great Gatsby", authors=["F. Scott Fitzgerald"]), Book(title="1984", authors=["George Orwell"]), Book(title="To Kill a Mockingbird", authors=["Harper Lee"])]
+        expected = ["1984", "The Great Gatsby", "To Kill a Mockingbird"]
+        selection_sort_books(books)
+        result = [book.title for book in books]
+        self.assertEqual(result, expected)
 
+    def test_selection_sort_books_2(self):
+        books = []
+        expected = []
+        selection_sort_books(books)
+        result = [book.title for book in books]
+        self.assertEqual(result, expected)
 
     # Part 2
+    def test_swap_case_1(self):
+        expected = "HeLLo"
+        result = swap_case("hEllO")
+        self.assertEqual(result, expected)
 
+    def test_swap_case_2(self):
+        expected = "CAL poly SLO"
+        result = swap_case("cal POLY slo")
+        self.assertEqual(result, expected)
 
     # Part 3
+    def test_str_translate_1(self):
+        expected = 'xbcdcbx'
+        result = str_translate('abcdcba', 'a', 'x')
+        self.assertEqual(result, expected)
 
+    def test_str_translate_2(self):
+        expected = 'oouuoooi'
+        result = str_translate('zzuuzzzi', 'z', 'o')
+        self.assertEqual(result, expected)
 
     # Part 4
+    def test_histogram_1(self):
+        expected = {"hello": 3, "goodbye": 1}
+        result = histogram("hello goodbye hello hello")
+        self.assertEqual(result, expected)
 
-
-
+    def test_histogram_2(self):
+        expected = {"coding": 1, "is": 1, "fun": 1}
+        result = histogram("coding is fun")
+        self.assertEqual(result, expected)
 
 
 if __name__ == '__main__':
