@@ -90,7 +90,7 @@ def str_translate(input_str: str, old_char: str, new_char: str) -> str:
 
 #Returns: A dictionary with each word in the input_strings mapped to a count of the number of times the word appears in input_strings
 def histogram(input_strings: str):
-    input_strings_split = input_strings.split(" ")
+    input_strings_split = input_strings.lower().split()
     dictionary = {}
     for strings in input_strings_split:
         if strings in dictionary:
